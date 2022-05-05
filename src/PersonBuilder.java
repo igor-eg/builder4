@@ -26,13 +26,12 @@ public class PersonBuilder {
     }
 
 
-    public PersonBuilder setAge(int age) {
-        try {
-            if (age < 0)
-                throw new IllegalArgumentException("возраст не может быть отрицательным");
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+    public PersonBuilder setAge(int age) throws IllegalArgumentException {
+        if (age < 0) {
+            throw new IllegalArgumentException("возраст не может быть отрицательным");
         }
+
+
         this.age = age;
         return this;
 
@@ -43,17 +42,14 @@ public class PersonBuilder {
         return this;
     }
 
-    public Person build() {
+    public Person build() throws IllegalStateException {
         i++;
-        // Проверка незаполненности обязаттельных полей
-        try {
-            if ((i == 2) & (surname == null | name == null)) {
-                throw new IllegalStateException("Не все поля заполнены");
-            }
 
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
+
+        if ((i == 2) & (surname == null | name == null)) {
+            throw new IllegalStateException("Не все поля заполнены");
         }
+
         return new Person(name, surname, age, city);
     }
 

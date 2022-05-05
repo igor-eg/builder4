@@ -9,59 +9,65 @@ public class Main {
         mom = new PersonBuilder()
                 .build();
 //1 тест-------------------------------------------------------------------
+        try {
+            mom = new PersonBuilder()
+                    .setName("Анна")
+                    .setSurname("Петрова")
+                    .setAge(32)
+                    .setAddress("Сидней")
+                    .build();
 
-        mom = new PersonBuilder()
-                .setName("Анна")
-                .setSurname("Петрова")
-                .setAge(32)
-                .setAddress("Сидней")
-                .build();
+            son = mom.newChildBuilder()
+                    .setName("Антошка")
+                    .build();
 
-        son = mom.newChildBuilder()
-                .setName("Антошка")
-                .build();
-        fillingListPerson(mom, son);
+            fillingListPerson(mom, son);
 
 //2 тест-------------------------------------------------------------------
-        mom = new PersonBuilder()
-                .setName("Анна")
-                .setSurname("Петрова")
-                .setAge(32)
-                .setAddress("Орел")
-                .build();
+            mom = new PersonBuilder()
+                    .setName("Анна")
+                    .setSurname("Петрова")
+                    .setAge(32)
+                    .setAddress("Орел")
+                    .build();
 
-        son = mom.newChildBuilder()
-                .setName("Петр")
-                .build();
+            son = mom.newChildBuilder()
+                    .setName("Петр")
+                    .build();
 
-        fillingListPerson(mom, son);
+            fillingListPerson(mom, son);
 
 //3 тест-------------------------------------------------------------------
 
-        mom = new PersonBuilder()
-                .setName("Ольга")
-                .setSurname("Иванова")
-                .setAge(31)
-                .setAddress("Питер")
-                .build();
+            mom = new PersonBuilder()
+                    .setName("Ольга")
+                    .setSurname("Иванова")
+                    .setAge(31)
+                    .setAddress("Питер")
+                    .build();
 
-        fillingListPerson(mom, son);
+            fillingListPerson(mom, son);
 
 //4 тест-----------------------------------------------------------------
 
-        mom = new PersonBuilder()
-                .setName("Майя")
-                .setSurname("Семенова")
-                //.setAge(31)
-                .setAddress("Новосибирск")
-                .build();
-        son = mom.newChildBuilder()
-                .setName("Вася")
-                .build();
+            mom = new PersonBuilder()
+                    .setName("Майя")
+                    .setSurname("Семенова")
+                    //.setAge(31)
+                    .setAddress("Новосибирск")
+                    .build();
+            son = mom.newChildBuilder()
+                    .setName("Вася")
+                    .build();
 
 
-        fillingListPerson(mom, son);
+            fillingListPerson(mom, son);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
 
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
         // Печать списка людей
         System.out.println("Список :");
         for (Map.Entry<Person, List<Person>> entry : persons.entrySet()) {
