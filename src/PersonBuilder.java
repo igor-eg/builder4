@@ -8,14 +8,6 @@ public class PersonBuilder {
     protected static int i = 0;
 
     public PersonBuilder setName(String name) {
-        try {
-            if (name == null) {
-                throw new InternalError("Не все поля заполнены");
-            }
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        }
-
         this.name = name;
         return this;
     }
